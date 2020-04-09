@@ -23,10 +23,6 @@ require('./data/reddit-db');
 
 // GET Routes
 
-app.get('/', (req, res) => {
-    res.render('index')
-})
-
 app.get('/posts/new', (req, res) => {
     res.render('posts-new')
 })

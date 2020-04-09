@@ -1,0 +1,27 @@
+<!-- index.handlebars -->
+
+
+<div class="container">
+    <div class="row" style='padding-top: 100px;'>
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center">
+            <h2>All Your Posts!</h2>
+            <hr>
+            <div class="row" style="padding-top: 40px;">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <ul>
+                        {{#each posts}}
+                            <li class="list-group-item text-center">
+                                <div class="lead">{{this.title}}</div>
+                                <a href="{{this.url}}" target="_blank">{{this.url}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4"></div>
+
+    </div>
+</div>
