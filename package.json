@@ -4,7 +4,7 @@
   "description": "Reddit like node project",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Andrey Novichkov",
   "license": "ISC",
@@ -16,5 +16,10 @@
     "handlebars": "^4.5.3",
     "mongoose": "^5.9.7",
     "nodemon": "^2.0.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^7.1.1"
   }
 }

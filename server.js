@@ -21,17 +21,10 @@ app.use(expressValidator());
 require('./controllers/posts.js')(app);
 require('./data/reddit-db');
 
-// GET Routes
-
-app.get('/posts/new', (req, res) => {
-    res.render('posts-new')
-})
-
-
-
-
 
 // Start Server
 app.listen(3000, () => {
     console.log('Reddit listening on port localhost:3000!');
 });
+
+module.exports = app;
