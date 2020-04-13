@@ -1,20 +1,16 @@
 <div class="container">
     <div class="row" style='padding-top: 100px;'>
-        <div class="col-md-4"></div>
-        <div class="col-md-4 text-center">
-            <h2>{{post.title}}</h2>
+        <div class="col-md-3"></div>
+        <div class="col-md-6 text-center">
+            <h2><a href="/n/{{post.subreddit}}">{{post.subreddit}}</a>/{{post.title}}</h2>
             <hr>
-            <div class="row" style="padding-top: 40px;">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <a href='post.url' target="_blank">{{post.url}}</a>
+                <a href='post.url' target="_blank">{{post.url}}</a>
+                <div class="text-right">
+
                 </div>
-                <div class="col-md-4"></div>
-
             </div>
-
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
 
     </div>
 </div>

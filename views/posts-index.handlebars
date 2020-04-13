@@ -3,25 +3,23 @@
 
 <div class="container">
     <div class="row" style='padding-top: 100px;'>
-        <div class="col-md-4"></div>
-        <div class="col-md-4 text-center">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 text-center">
             <h2>All Your Posts!</h2>
             <hr>
             <div class="row" style="padding-top: 40px;">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <ul>
-                        {{#each posts}}
-                            <li class="list-group-item text-center">
-                                <div class="lead"><a href="/posts/{{this._id}}">{{this.title}}</a></div>
-                                <a href="{{this.url}}" target="_blank">{{this.url}}</a>
-                            </li>
-                        {{/each}}
-                    </ul>
-                </div>
+                {{#each posts}}
+                    <div class="col-md-4">
+                        <div class="card" style="padding: 20px; margin: 20px;">
+                            <div class="lead"><a href="/posts/{{this._id}}">{{this.title}}</a></div>
+                            <a href="{{this.url}}" target="_blank">{{this.url}}</a>
+                            <div class="text-right">{{this.subreddit}}</div>
+                        </div>
+                    </div>
+                {{/each}}
             </div>
-
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-1"></div>
 
     </div>
 </div>
