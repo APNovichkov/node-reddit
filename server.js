@@ -18,8 +18,10 @@ app.use(expressValidator());
 
 
 // Add controllers
+require('./controllers/comments.js')(app);
 require('./controllers/posts.js')(app);
 require('./data/reddit-db');
+
 
 
 // Start Server
