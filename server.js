@@ -6,6 +6,8 @@ const app = express();
 
 // Middleware
 const dotenv = require('dotenv').config();
+var cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
@@ -13,6 +15,7 @@ const expressValidator = require('express-validator');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
