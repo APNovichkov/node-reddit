@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 
 // Middleware
+const dotenv = require('dotenv').config();
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
