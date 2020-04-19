@@ -18,9 +18,11 @@ app.use(expressValidator());
 
 
 // Add controllers
+require('./controllers/auth.js')(app);
 require('./controllers/comments.js')(app);
 require('./controllers/posts.js')(app);
 require('./data/reddit-db');
+
 
 
 
