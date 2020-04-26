@@ -9,8 +9,9 @@
             <div class="row" style='padding-top: 20px;'>
                 {{#each post.comments}}
                     <div class="col-md-6">
-                        <div class="card">
-                            {{this.content}}
+                        <div class="card" style="padding: 15px; background-color: #FEFEFE">
+                            <h6 style="text-align: left">{{this.content}}</h6>
+                            <div style="text-align: right"><small>- {{this.author.username}}</small></div>
                         </div>
                     </div>
                 {{/each}}

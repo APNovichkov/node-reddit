@@ -3,10 +3,10 @@ const Post = require('../models/post');
 
 module.exports = (app) => {
     app.post('/posts/:postId/comments', (req, res) => {
-        console.log("Hello from post!")
         const comment = new Comment(req.body);
-        comment
-            .save()
+        comment.author = req.user
+
+        comment.save()
             .then(comment => {
                 return Post.findById(req.params.postId)
             })
