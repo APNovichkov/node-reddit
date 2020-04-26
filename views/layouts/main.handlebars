@@ -23,15 +23,20 @@
                     <li class="nav-item active rideshare-nav-item">
                         <a class="nav-link" href="#">SOMETHING HERE</a>
                     </li>
-                    <li class="nav-item active rideshare-nav-item">
-                        <a href="/posts/new" class="btn btn-dark navbar-btn" style='margin-left: 40px; border-radius: 40px;'>New Post</a>
-                    </li>
+                    {{#if currentUser}}
+                        <li class="nav-item active rideshare-nav-item">
+                            <a href="/posts/new" class="btn btn-dark navbar-btn" style='margin-left: 40px; border-radius: 40px;'>New Post</a>
+                        </li>
+                    {{/if}}
                 </ul>
             </div>
             <div class="nav navbar-nav navbar-right">
-                <a class='btn btn-danger' style='margin-left: 10px; border-radius: 40px;' href='/logout'>Logout</a>
-                <a class='btn btn-success' style='margin-left: 10px; border-radius: 40px;' href='/login'>Login</a>
-                <a class='btn btn-warning' style='margin-left: 10px; border-radius: 40px;' href='/sign-up'>Sign Up</a>
+                {{#if currentUser}}
+                    <a class='btn btn-danger' style='margin-left: 10px; border-radius: 40px;' href='/logout'>Logout</a>
+                {{else}}
+                    <a class='btn btn-success' style='margin-left: 10px; border-radius: 40px;' href='/login'>Login</a>
+                    <a class='btn btn-warning' style='margin-left: 10px; border-radius: 40px;' href='/sign-up'>Sign Up</a>
+                {{/if}}
             </div>
         </div>
     </nav>
