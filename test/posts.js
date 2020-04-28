@@ -30,8 +30,43 @@ const user = {
 describe('Posts', function() {
   // const agent = chai.request.agent(server);
 
+  before(function (done) {
+      agent
+        .post('/sign-up')
+        .set("content-type", "application/x-www-form-urlencoded")
+        .send(user)
+        .then(function (res) {
+          done();
+        })
+        .catch(function (err) {
+          done(err);
+        });
+    });
+
+  after(function (done) {
+    Post.findOneAndDelete(newPost)
+    .then(function (res) {
+        agent.close()
+
+        User.findOneAndDelete({
+            username: user.username
+        })
+          .then(function (res) {
+              done()
+          })
+          .catch(function (err) {
+              done(err);
+          });
+    })
+    .catch(function (err) {
+        done(err);
+    });
+  });
+
+
+
     it("should create with valid attributes at POST /posts/new", function (done) {
-        agent.should.have.cookie("nToken");
+
       // Checks how many posts there are now
         Post.estimatedDocumentCount()
           .then(function (initialDocCount) {
@@ -99,37 +134,6 @@ describe('Posts', function() {
           });
       });
 
-      after(function (done) {
-        Post.findOneAndDelete(newPost)
-        .then(function (res) {
-            agent.close()
 
-            User.findOneAndDelete({
-                username: user.username
-            })
-              .then(function (res) {
-                  done()
-              })
-              .catch(function (err) {
-                  done(err);
-              });
-        })
-        .catch(function (err) {
-            done(err);
-        });
-      });
-
-      before(function (done) {
-        agent
-          .post('/sign-up')
-          .set("content-type", "application/x-www-form-urlencoded")
-          .send(user)
-          .then(function (res) {
-            done();
-          })
-          .catch(function (err) {
-            done(err);
-          });
-      });
 
 });

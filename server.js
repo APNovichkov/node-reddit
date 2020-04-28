@@ -18,10 +18,12 @@ app.set('view engine', 'handlebars');
 var checkAuth = (req, res, next) => {
   console.log("Checking authentication");
   if (typeof req.cookies.nToken === "undefined" || req.cookies.nToken === null) {
-    req.user = null;
+      console.log("Cookie nToken undefined")
+      req.user = null;
   } else {
     var token = req.cookies.nToken;
     var decodedToken = jwt.decode(token, { complete: true }) || {};
+    console.log("Cookie nToken IS defined: " + decodedToken.payload)
     req.user = decodedToken.payload;
   }
 
