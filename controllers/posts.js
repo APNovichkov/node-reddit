@@ -31,6 +31,7 @@ module.exports = (app) => {
                 console.log(err.message);
             })
         }else{
+            console.log("User is not authorized")
             res.sendStatus(401); // Unauthorized!
         }
     });
