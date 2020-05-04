@@ -10,7 +10,7 @@ var cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const expressValidator = require('express-validator');
+const expressValidator = s
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -41,7 +41,6 @@ require('./controllers/auth.js')(app);
 require('./controllers/comments.js')(app);
 require('./controllers/posts.js')(app);
 require('./data/reddit-db');
-
 
 
 

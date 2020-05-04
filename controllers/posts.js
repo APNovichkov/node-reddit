@@ -39,7 +39,8 @@ module.exports = (app) => {
     app.get('/', (req, res) => {
         var currentUser = req.user;
 
-        Post.find().populate('author').lean()
+        Post.find().populate('author')
+            .lean()
             .then(posts => {
                 res.render("posts-index", { posts, currentUser });
             })
@@ -51,13 +52,14 @@ module.exports = (app) => {
     app.get("/posts/:id", function(req, res) {
         var currentUser = req.user;
 
-        Post.findById(req.params.id).populate({path:'comments', populate: {path: 'author'}}).populate('author').lean()
-        .then(post => {
-            res.render("posts-show", { post, currentUser });
-        })
-        .catch(err => {
-            console.log(err.message);
-        });
+        Post.findById(req.params.id)
+            .lean()
+            .then(post => {
+                res.render("posts-show", { post, currentUser });
+            })
+            .catch(err => {
+                console.log(err.message);
+            });
     });
 
 
@@ -65,13 +67,14 @@ module.exports = (app) => {
     app.get("/n/:subreddit", function(req, res) {
         var currentUser = req.user;
 
-        Post.find({ subreddit: req.params.subreddit }).populate('author').lean()
-          .then(posts => {
-            res.render("posts-index", { posts, currentUser });
-          })
-          .catch(err => {
-            console.log(err);
-          });
+        Post.find({ subreddit: req.params.subreddit })
+            .lean()
+            .then(posts => {
+                res.render("posts-index", { posts, currentUser });
+            })
+            .catch(err => {
+                console.log(err);
+            });
     });
 
 };

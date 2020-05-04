@@ -2,17 +2,17 @@ const Comment = require('../models/comment')
 const Post = require('../models/post');
 
 module.exports = (app) => {
-    app.post('/posts/:postId/comments', (req, res) => {
+    app.post('/posts/:postId/comments', async (req, res) => {
         const comment = new Comment(req.body);
         comment.author = req.user
 
         comment.save()
             .then(comment => {
-                return Post.findById(req.params.postId)
+                return await Post.findById(req.params.postId)
             })
             .then(post => {
                 post.comments.unshift(comment);
-                return post.save();
+                return await post.save();
             })
             .then(post => {
                 return res.redirect('/');
