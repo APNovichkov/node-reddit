@@ -1,0 +1,25 @@
+<div class="col-md-6 comment-indent">
+    <div class="card" style="padding: 15px; background-color: #FEFEFE; box-shadow: 10px 10px 82px -42px rgba(0,0,0,0.75);">
+        <h6 style="text-align: left">{{this.content}}</h6>
+        <div style="text-align: left"><small>- {{this.author.username}}</small></div>
+        <div style="text-align: right"><small><a href="#" onclick="showCommentForm()">Reply</a></small></div>
+    </div>
+
+    <div class="reply-form" id="commentform" style="display: none;">
+        <div style='padding-top: 10px;'>
+            <form action="/posts/{{postId}}/comments/{{this._id}}/replies" method='post'>
+                <div class="form-group">
+                    <textarea name="content" class="form-control" id="reply-content" placeholder="Reply"></textarea>
+                </div>
+
+                <div class='text-right'>
+                    <button type="submit" class="btn btn-success" style='height: 30px; border-radius: 30px; padding-bottom: 30px;'>Reply</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {{#each comment.comments}}
+        {{> comment comment=this postId=../postId}}
+    {{/each}}
+</div>

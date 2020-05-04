@@ -15,7 +15,7 @@ module.exports = (app) => {
                 return post.save();
             })
             .then(post => {
-                return res.redirect('/');
+                res.redirect(`/posts/${req.params.postId}`);
             })
             .catch(err => {
                 console.log(err);

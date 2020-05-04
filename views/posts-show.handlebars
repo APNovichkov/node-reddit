@@ -8,12 +8,7 @@
             <a href='post.url' target="_blank">{{post.url}}</a>
             <div class="row" style='padding-top: 20px;'>
                 {{#each post.comments}}
-                    <div class="col-md-6">
-                        <div class="card" style="padding: 15px; background-color: #FEFEFE">
-                            <h6 style="text-align: left">{{this.content}}</h6>
-                            <div style="text-align: right"><small>- {{this.author.username}}</small></div>
-                        </div>
-                    </div>
+                    {{> comment comment=this postId=../post._id}}
                 {{/each}}
             </div>
             <div class="" style="padding-top: 20px;">
@@ -31,3 +26,17 @@
 
     </div>
 </div>
+
+<script>
+
+    function showCommentForm() {
+        console.log("Hi im in scripts!")
+        const x = document.getElementById("commentform");
+        if(x.style.display === "none"){
+            x.style.display = "block";
+        }else{
+            x.style.display = "none";
+        }
+    }
+
+</script>
