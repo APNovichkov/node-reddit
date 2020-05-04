@@ -10,7 +10,7 @@ var cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const expressValidator = s
+const expressValidator = require('express-validator');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
