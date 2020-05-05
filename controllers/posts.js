@@ -12,7 +12,10 @@ module.exports = (app) => {
         console.log("Submitting post")
         if(req.user){
             const post = new Post(req.body);
-            post.author = req.user
+            post.author = req.user;
+            post.upVotes = [];
+            post.downVotes = [];
+            post.voteScore = 0;
 
             console.log("User is not null")
 
@@ -75,6 +78,28 @@ module.exports = (app) => {
             .catch(err => {
                 console.log(err);
             });
+    });
+
+    // For voting up and down
+    app.put("/posts/:id/vote-up", function(req, res) {
+        Post.findById(req.params.id).exec(function(err, post) {
+            console.log("Found post: " + post.title)
+            post.upVotes.push(req.user._id);
+            post.voteScore = post.voteScore + 1;
+            post.save();
+            res.status(200);
+        });
+      });
+      
+    app.put("/posts/:id/vote-down", function(req, res) {
+        Post.findById(req.params.id).exec(function(err, post) {
+            post.downVotes.push(req.user._id);
+            post.voteScore = post.voteScore - 1;
+            post.save();
+            res.status(200);
+        }).catch(err => {
+            console.log(err);
+        });
     });
 
 };

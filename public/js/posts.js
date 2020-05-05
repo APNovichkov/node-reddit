@@ -3,9 +3,12 @@ $(document).ready(function() {
       e.preventDefault();
   
       var postId = $(this).data("id");
+      console.log('post id: ' + postId)
+      url = `${postId}/vote-up`
+      console.log('post url: ' + url)
       $.ajax({
         type: "PUT",
-        url: "posts/" + postId + "/vote-up",
+        url: url,
         success: function(data) {
           console.log("voted up!");
         },
