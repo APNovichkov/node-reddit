@@ -3,7 +3,6 @@ $(document).ready(function() {
       e.preventDefault();
   
       var postId = $(this).data("id");
-      console.log('post id: ' + postId)
       url = `${postId}/vote-up`
       console.log('post url: ' + url)
       $.ajax({
@@ -21,10 +20,12 @@ $(document).ready(function() {
     $(".vote-down").submit(function(e) {
       e.preventDefault();
   
+
       var postId = $(this).data("id");
+      url = `${postId}/vote-down`
       $.ajax({
         type: "PUT",
-        url: "posts/" + postId + "/vote-down",
+        url: url,
         success: function(data) {
           console.log("voted down!");
         },

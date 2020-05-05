@@ -97,8 +97,6 @@ module.exports = (app) => {
             post.voteScore = post.voteScore - 1;
             post.save();
             res.status(200);
-        }).catch(err => {
-            console.log(err);
         });
     });
 
