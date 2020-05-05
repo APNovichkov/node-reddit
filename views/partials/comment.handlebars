@@ -23,3 +23,18 @@
         {{> comment comment=this postId=../postId}}
     {{/each}}
 </div>
+
+
+<script>
+
+    function showCommentForm() {
+        console.log("Hi im in scripts!")
+        const x = document.getElementById("commentform");
+        if(x.style.display === "none"){
+            x.style.display = "block";
+        }else{
+            x.style.display = "none";
+        }
+    }
+
+</script>

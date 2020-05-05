@@ -35,6 +35,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(checkAuth);
 
+// Look for static files in the public folder
+app.use(express.static('public'));
+
 
 // Add controllers
 require('./controllers/auth.js')(app);
